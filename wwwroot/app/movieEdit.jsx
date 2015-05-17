@@ -2,7 +2,7 @@ var InputText = React.createClass({
     componentWillReceiveProps: function (newProps) {
         React.findDOMNode(this.refs.input).value = newProps.value
     },
-    onChange(){
+    onChange: function(){
         var value = React.findDOMNode(this.refs.input).value;
         this.props.onChange({value: value, prop: this.props.prop});
     },
@@ -24,7 +24,7 @@ var TextArea = React.createClass({
     componentWillReceiveProps: function (newProps) {
         React.findDOMNode(this.refs.input).value = newProps.value
     },
-    onChange(){
+    onChange: function(){
         var value = React.findDOMNode(this.refs.input).value;
         this.props.onChange({value: value, prop: this.props.prop});
     },
@@ -57,17 +57,17 @@ var MovieEdit = React.createClass({
             _this.setState({movie: movie});
         })
     },
-    onChange(e){
+    onChange: function(e){
         var movie = this.state.movie;
         movie[e.prop] = e.value;
         this.setState({movie: movie});
     },
-    onChangeRatings(e){
+    onChangeRatings: function(e){
         var movie = this.state.movie;
         movie.ratings[e.prop] = e.value;
         this.setState({movie: movie});
     },
-    save(){
+    save: function(){
         var id = this.context.router.getCurrentParams().id;
         var _this = this;
         $.ajax('/api/movies/' + id, {
